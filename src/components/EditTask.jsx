@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
 function EditTask({ task, index, onEditTask }) {
+  // State variable for edited task
   const [editedTask, setEditedTask] = useState({ ...task });
 
+  // Event handler for form inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEditedTask((prevTask) => ({

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import DeleteTask from './DeleteTask';
 
 function TaskCard({ index, title, description, teamName, assignees, priority, status, onDeleteTask, onEditTask }) {
+  // State variable for showing options menu and delete popup
   const [showOptions, setShowOptions] = useState(false);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
 
@@ -14,6 +15,8 @@ function TaskCard({ index, title, description, teamName, assignees, priority, st
     setShowOptions(false);
   };
 
+
+  // Event handlers for options menu and delete popup
   const handleDeleteClick = () => {
     setShowDeletePopup(true);
      setShowOptions(false);

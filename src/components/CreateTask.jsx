@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const CreateTask = ({ onAddTask, setShowCreateForm }) => {
+    // State variable for form data
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -12,6 +13,8 @@ const CreateTask = ({ onAddTask, setShowCreateForm }) => {
     endDate: ""
   });
 
+
+  // Event handlers for form interactions
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({

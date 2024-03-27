@@ -4,6 +4,7 @@ import TaskCard from './TaskCard';
 import EditTask from './EditTask';
 
 function TaskBoard() {
+    // State variables
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [tasks, setTasks] = useState(() => {
     const storedTasks = localStorage.getItem('tasks');
@@ -17,10 +18,12 @@ function TaskBoard() {
     toDate: '',
   });
 
+  // useEffect to update localStorage when tasks change
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
 
+  // Function to filter tasks based on filters state
   const filteredTasks = tasks.filter((task) => {
     const assigneeMatch = !filters.assignee || task.assignees === filters.assignee;
     const priorityMatch = !filters.priority || task.priority === filters.priority;
@@ -30,6 +33,7 @@ function TaskBoard() {
     return assigneeMatch && priorityMatch && dateRangeMatch;
   });
 
+  // Function to sort tasks based on sortBy parameter
   const sortTasks = (taskList, sortBy) => {
     if (sortBy === 'priority') {
       const priorityOrder = { P0: 0, P1: 1, P2: 2 };
@@ -46,12 +50,15 @@ function TaskBoard() {
     return taskList;
   };
 
+  // Functions to handle adding, deleting, and editing tasks
+  
   const handleAddTask = (newTask) => {
     const updatedTasks = [...tasks, newTask];
     setTasks(updatedTasks);
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     setShowCreateForm(false);
   };
+
 
   const handleDeleteTask = (index) => {
     const updatedTasks = [...tasks];
